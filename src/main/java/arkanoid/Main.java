@@ -1,8 +1,10 @@
+package arkanoid;
+
+import arkanoid.game.elements.*;
+
 import javax.swing.*;
 
-import elements.*;
-
-import static elements.Constants.*;
+import static arkanoid.game.elements.Constants.*;
 
 public class Main {
     public static void main(String[] args) {

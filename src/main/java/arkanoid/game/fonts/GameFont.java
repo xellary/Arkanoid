@@ -1,4 +1,4 @@
-package fonts;
+package arkanoid.game.fonts;
 
 import java.awt.*;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class GameFont {
             InputStream is = getClass().getResourceAsStream("Arcade.TTF");
             gameFont = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

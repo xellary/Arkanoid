@@ -1,4 +1,4 @@
-package elements;
+package arkanoid.game.elements;
 
 public interface LevelPictures {
     int[][] LEVEL3_PICTURE = {

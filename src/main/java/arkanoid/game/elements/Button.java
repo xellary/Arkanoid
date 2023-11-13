@@ -1,6 +1,6 @@
-package elements;
+package arkanoid.game.elements;
 
-import fonts.MenuFont;
+import arkanoid.game.fonts.MenuFont;
 
 import java.awt.*;
 

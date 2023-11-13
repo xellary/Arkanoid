@@ -1,6 +1,7 @@
-package elements;
+package arkanoid.game.elements;
 
 import java.awt.*;
+
 
 public interface Constants {
 

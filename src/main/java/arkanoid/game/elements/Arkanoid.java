@@ -1,6 +1,6 @@
-package elements;
+package arkanoid.game.elements;
 
-import fonts.GameFont;
+import arkanoid.game.fonts.GameFont;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static elements.Constants.*;
-import static elements.LevelPictures.*;
+import static arkanoid.game.elements.Constants.*;
+import static arkanoid.game.elements.LevelPictures.*;
 
 public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
@@ -177,7 +177,8 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
     private void actGame(BricksGenerator pattern) {
         if (play) {
-            if (new Rectangle(ball.x, ball.y, ball.radius, ball.radius).intersects(new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height))) {
+            if (new Rectangle(ball.x, ball.y, ball.radius, ball.radius).intersects(
+                    new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height))) {
                 ball.yDir = -ball.yDir;
             }
 

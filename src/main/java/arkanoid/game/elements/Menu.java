@@ -1,10 +1,10 @@
-package elements;
+package arkanoid.game.elements;
 
-import fonts.MenuFont;
+import arkanoid.game.fonts.MenuFont;
 
 import java.awt.*;
 
-import static elements.Constants.*;
+import static arkanoid.game.elements.Constants.*;
 
 public class Menu{
 

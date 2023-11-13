@@ -1,4 +1,4 @@
-package elements;
+package arkanoid.game.elements;
 
 import java.awt.*;
 

@@ -1,9 +1,9 @@
-package elements;
+package arkanoid.game.elements;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static elements.Constants.*;
+import static arkanoid.game.elements.Constants.*;
 
 public class MouseInput implements MouseListener {
 
