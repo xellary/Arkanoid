@@ -3,6 +3,7 @@ package arkanoid.game.elements;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 import static arkanoid.game.elements.Constants.*;
 
@@ -68,7 +69,12 @@ public class MouseInput implements MouseListener, MouseMotionListener {
         int mx = e.getX();
         int my = e.getY();
 
-        PLAY_BUTTON.mouseX = mx;
-        PLAY_BUTTON.mouseY = my;
+        List<Button> buttons = List.of(PLAY_BUTTON, QUIT_BUTTON,
+                MENU_BUTTON, LEVEL_ONE_BUTTON,
+                LEVEL_TWO_BUTTON, LEVEL_THREE_BUTTON);
+
+        for (Button button : buttons) {
+            button.enter = button.buttonEntered(mx, my);
+        }
     }
 }

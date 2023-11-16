@@ -9,8 +9,6 @@ public class Button {
     private int y;
     private int width;
     private int height;
-    public int mouseX;
-    public int mouseY;
     public boolean enter;
     private int sizeOfFont;
     private String text;
@@ -27,7 +25,7 @@ public class Button {
     public void drawButton(Graphics2D g, int posX, int posY) {
         Font font = new MenuFont().getFont();
         Brick brick = new Brick(width, height);
-        if (buttonEntered(mouseX, mouseY)) {
+        if (enter) {
             brick.color = Color.gray;
         } else {
             brick.color = Color.darkGray;
