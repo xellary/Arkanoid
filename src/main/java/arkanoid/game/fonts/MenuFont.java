@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class MenuFont {
     private Font menuFont;
 
-    {
+    public MenuFont() {
         try {
             InputStream is = getClass().getResourceAsStream("Galaxus.ttf");
             menuFont = Font.createFont(Font.TRUETYPE_FONT, is);

@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class GameFont {
     private Font gameFont;
 
-    {
+    public GameFont() {
         try {
             InputStream is = getClass().getResourceAsStream("Arcade.TTF");
             gameFont = Font.createFont(Font.TRUETYPE_FONT, is);
