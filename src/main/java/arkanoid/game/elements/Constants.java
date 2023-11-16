@@ -23,11 +23,11 @@ public interface Constants {
     Color MY_RED = new Color(236,48,11);
     Color MY_BLUE = new Color(6,232,239);
     Color MY_ORANGE = new Color(255, 153, 0);
-    Button QUIT_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 400, 100, 40);
-    Button PLAY_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 200, 100, 40);
-    Button MENU_BUTTON = new Button(10,5,100,30);
-    Button LEVEL_ONE_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 200, 100, 40);
-    Button LEVEL_TWO_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 300, 100, 40);
-    Button LEVEL_THREE_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 400, 100, 40);
+    Button QUIT_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 400, 100, 40, "QUIT", 27);
+    Button PLAY_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 200, 100, 40, "PLAY", 27);
+    Button MENU_BUTTON = new Button(10,5,100,30, "MENU", 24);
+    Button LEVEL_ONE_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 200, 100, 40,"LEVEL 1",23);
+    Button LEVEL_TWO_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 300, 100, 40,"LEVEL 2", 23);
+    Button LEVEL_THREE_BUTTON = new Button(RESOLUTION_WIDTH / 2 - 60, 400, 100, 40,"LEVEL 3",23);
 
 }

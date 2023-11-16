@@ -6,28 +6,23 @@ import java.awt.*;
 
 import static arkanoid.game.elements.Constants.*;
 
-public class Menu{
+public class Menu {
 
     private Font menuFont = new MenuFont().getFont();
 
     public void draw(Graphics2D g) {
         drawBackground(g);
-        PLAY_BUTTON.drawButton(g, 27);
-        PLAY_BUTTON.drawButtonText(g, "PLAY", 20, 27);
-        QUIT_BUTTON.drawButton(g, 27);
-        QUIT_BUTTON.drawButtonText(g, "QUIT", 22, 27);
+        PLAY_BUTTON.drawButton(g, 20, 27);
+        QUIT_BUTTON.drawButton(g, 22, 27);
         g.setFont(g.getFont().deriveFont(Font.PLAIN, 40));
         g.drawString("ARKANOID", RESOLUTION_WIDTH / 2 - 102, RESOLUTION_HEIGHT - 500);
     }
 
     public void drawLevelSelection(Graphics2D g) {
         drawBackground(g);
-        LEVEL_ONE_BUTTON.drawButton(g, 23);
-        LEVEL_ONE_BUTTON.drawButtonText(g, "LEVEL 1", 14, 26);
-        LEVEL_TWO_BUTTON.drawButton(g, 23);
-        LEVEL_TWO_BUTTON.drawButtonText(g, "LEVEL 2", 14, 26);
-        LEVEL_THREE_BUTTON.drawButton(g, 23);
-        LEVEL_THREE_BUTTON.drawButtonText(g, "LEVEL 3", 14, 26);
+        LEVEL_ONE_BUTTON.drawButton(g, 14, 26);
+        LEVEL_TWO_BUTTON.drawButton(g, 14, 26);
+        LEVEL_THREE_BUTTON.drawButton(g, 14, 26);
         g.setFont(g.getFont().deriveFont(Font.PLAIN, 34));
         g.drawString("CHOOSE  THE  LEVEL", RESOLUTION_WIDTH / 2 - 155, RESOLUTION_HEIGHT - 500);
     }

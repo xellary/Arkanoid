@@ -29,6 +29,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     public Arkanoid() {
         addKeyListener(this);
         addMouseListener(new MouseInput());
+        addMouseMotionListener(new MouseInput());
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         int delay = 0;
@@ -131,8 +132,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.fillRect(0, 0, RESOLUTION_WIDTH, SCORE_PANEL_HEIGHT);
 
         // menu button
-        MENU_BUTTON.drawButton(gr, 24);
-        MENU_BUTTON.drawButtonText(gr, "MENU", 18, 20);
+        MENU_BUTTON.drawButton(gr,18, 20);
 
         // map
         pattern.draw(gr);
