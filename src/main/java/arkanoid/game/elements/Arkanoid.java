@@ -73,20 +73,12 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (state == State.LEVEL_ONE || state == State.LEVEL_TWO || state == State.LEVEL_THREE) {
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                if (paddle.x >= RESOLUTION_WIDTH - 120) {
-                    paddle.x = RESOLUTION_WIDTH - 120;
-                } else {
-                    play = true;
-                    paddle.moveRight();
-                }
+                play = true;
+                paddle.moveRight();
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                if (paddle.x <= 10) {
-                    paddle.x = 10;
-                } else {
-                    play = true;
-                    paddle.moveLeft();
-                }
+                play = true;
+                paddle.moveLeft();
             }
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (!play) {
@@ -163,15 +155,15 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
             gr.setColor(Color.white);
             gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 40));
             gr.drawString("You won", RESOLUTION_WIDTH / 2 - 60, RESOLUTION_HEIGHT / 2);
-        }
-
-        if (ball.y > RESOLUTION_HEIGHT - 30) {
+        } else if (ball.y > RESOLUTION_HEIGHT - 30) {
             play = false;
             ball.xDir = 0;
             ball.yDir = 0;
             gr.setColor(Color.white);
             gr.drawString("Game  Over", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2);
             gr.drawString("Press  Enter  to  Restart", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 + 40);
+        } else if (!play) {
+            gr.drawString("To  start  game  press", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2);
         }
     }
 

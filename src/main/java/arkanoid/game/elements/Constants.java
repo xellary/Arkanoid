@@ -14,7 +14,7 @@ public interface Constants {
     int START_X_LOCATION_0F_BALL = 395;
     int START_Y_LOCATION_0F_BALL = 575;
     int BALL_SIZE = 15;
-    int PADDLE_SPEED = 30;
+    int PADDLE_SPEED = 40;
     int SCORE_PANEL_HEIGHT = 40;
     Color MY_GREY = new Color(30, 31, 34);
     Color MY_PURPLE = new Color(56, 0, 130);

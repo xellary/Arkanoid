@@ -3,6 +3,7 @@ package arkanoid.game.elements;
 import java.awt.*;
 
 import static arkanoid.game.elements.Constants.PADDLE_SPEED;
+import static arkanoid.game.elements.Constants.RESOLUTION_WIDTH;
 
 public class Paddle {
 
@@ -25,11 +26,19 @@ public class Paddle {
     }
 
     public void moveRight() {
-        x += PADDLE_SPEED;
+        if (x + width  >= RESOLUTION_WIDTH - 50) {
+            x = RESOLUTION_WIDTH - 120;
+        } else {
+            x += PADDLE_SPEED;
+        }
     }
 
     public void moveLeft() {
-        x -= PADDLE_SPEED;
+        if (x <= 40) {
+            x = 10;
+        } else {
+            x -= PADDLE_SPEED;
+        }
     }
 
 }
