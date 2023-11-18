@@ -163,7 +163,15 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
             gr.drawString("Game  Over", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2);
             gr.drawString("Press  Enter  to  Restart", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 + 40);
         } else if (!play) {
-            gr.drawString("To  start  game  press", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2);
+            gr.setStroke(new BasicStroke(2));
+            gr.setColor(Color.gray);
+            gr.drawRect(RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 80, 450, 100);
+            gr.setColor(MY_GREY);
+            gr.fillRect(RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 80, 450, 100);
+            gr.setColor(Color.white);
+            gr.drawString("To  move paddle press", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 - 40);
+            gr.drawString("To  win break all the bricks", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 - 20);
+            gr.drawString("To  start game  press Enter", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2);
         }
     }
 

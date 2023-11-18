@@ -9,7 +9,7 @@ public class MenuFont {
 
     public MenuFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("Galaxus.ttf");
+            InputStream is = getClass().getResourceAsStream("/Galaxus.ttf");
             menuFont = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException | IOException e) {
             System.out.println(e.getMessage());
