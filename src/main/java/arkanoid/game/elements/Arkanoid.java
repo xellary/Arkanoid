@@ -73,12 +73,14 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (state == State.LEVEL_ONE || state == State.LEVEL_TWO || state == State.LEVEL_THREE) {
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                play = true;
-                paddle.moveRight();
+                if (play) {
+                    paddle.moveRight();
+                }
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                play = true;
-                paddle.moveLeft();
+                if (play) {
+                    paddle.moveLeft();
+                }
             }
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (!play) {
@@ -139,7 +141,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.setColor(Color.white);
         gr.setFont(font);
         gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 35));
-        gr.drawString("Score ", 335, 32);
+        gr.drawString("Score ", 340, 32);
         gr.drawString("" + score, 445, 32);
 
         // paddle
@@ -152,26 +154,14 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
             play = false;
             ball.xDir = 0;
             ball.yDir = 0;
-            gr.setColor(Color.white);
-            gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 40));
-            gr.drawString("You won", RESOLUTION_WIDTH / 2 - 60, RESOLUTION_HEIGHT / 2);
+            drawVictoryMessage(gr);
         } else if (ball.y > RESOLUTION_HEIGHT - 30) {
             play = false;
             ball.xDir = 0;
             ball.yDir = 0;
-            gr.setColor(Color.white);
-            gr.drawString("Game  Over", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2);
-            gr.drawString("Press  Enter  to  Restart", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 + 40);
+            drawDefeatMessage(gr);
         } else if (!play) {
-            gr.setStroke(new BasicStroke(2));
-            gr.setColor(Color.gray);
-            gr.drawRect(RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 80, 450, 100);
-            gr.setColor(MY_GREY);
-            gr.fillRect(RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 80, 450, 100);
-            gr.setColor(Color.white);
-            gr.drawString("To  move paddle press", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 - 40);
-            gr.drawString("To  win break all the bricks", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2 - 20);
-            gr.drawString("To  start game  press Enter", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2);
+            drawStartMessage(gr);
         }
     }
 
@@ -201,4 +191,38 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         repaint();
     }
 
+    private void drawMessageBack(Graphics2D gr) {
+        gr.setStroke(new BasicStroke(3));
+        gr.setColor(Color.gray);
+        gr.drawRect(RESOLUTION_WIDTH / 2 - 230, RESOLUTION_HEIGHT / 2 - 100, 450, 150);
+        gr.setColor(MY_GREY);
+        gr.fillRect(RESOLUTION_WIDTH / 2 - 230, RESOLUTION_HEIGHT / 2 - 100, 450, 150);
+    }
+
+    private void drawVictoryMessage(Graphics2D gr) {
+        drawMessageBack(gr);
+        gr.setColor(Color.white);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 40));
+        gr.drawString("You won", RESOLUTION_WIDTH / 2 - 70, RESOLUTION_HEIGHT / 2 - 10);
+    }
+
+    private void drawDefeatMessage(Graphics2D gr) {
+        drawMessageBack(gr);
+        gr.setColor(Color.red);
+        gr.drawString("Game  Over", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2 - 40);
+        gr.setColor(Color.white);
+        gr.drawString("Press  Enter  to  Restart", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2);
+    }
+
+    private void drawStartMessage(Graphics2D gr) {
+        drawMessageBack(gr);
+        gr.setColor(Color.white);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 32));
+        gr.drawString("To  move  paddle  press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 60);
+        gr.drawString("Left and right arrows", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 30);
+        gr.drawString("To  win  break all the bricks", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2);
+        gr.drawString("To  start game  press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 + 30);
+        gr.setColor(Color.green);
+        gr.drawString("Enter", RESOLUTION_WIDTH / 2 + 100, RESOLUTION_HEIGHT / 2 + 30);
+    }
 }
