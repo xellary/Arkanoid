@@ -10,6 +10,7 @@ public class Level {
         this.name = name;
         this.pattern = pattern;
     }
+
     public int getId() {
         return id;
     }

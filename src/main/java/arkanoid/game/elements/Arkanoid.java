@@ -29,8 +29,6 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private Paddle paddle = new Paddle(START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
     public static State state = State.MENU;
     private final Menu menu = new Menu();
-    private MyDataBase db;
-    private LevelPersistence levelPersistence;
     private Level secondLevel;
     private Level thirdLevel;
 
@@ -40,7 +38,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         addMouseMotionListener(new MouseInput());
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        createGameLevels();
+        createLevelsFromDB();
         int delay = 0;
         Timer timer = new Timer(delay, this);
         timer.start();
@@ -137,7 +135,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.fillRect(0, 0, RESOLUTION_WIDTH, SCORE_PANEL_HEIGHT);
 
         // menu button
-        MENU_BUTTON.drawButton(gr,25, 20);
+        Menu.menuButton.drawButton(gr,25, 20);
 
         // map
         pattern.draw(gr);
@@ -238,13 +236,12 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.drawString("Enter", RESOLUTION_WIDTH / 2 + 90, RESOLUTION_HEIGHT / 2 + 30);
     }
 
-    private void createGameLevels() {
-        db = MyDataBase.getInstance();
-        levelPersistence = new LevelPersistence();
+    private void createLevelsFromDB() {
+        MyDataBase db = MyDataBase.getInstance();
+        LevelPersistence levelPersistence = new LevelPersistence();
         levelPersistence.createLevel("Pyramid", PYRAMID);
         levelPersistence.createLevel("Crab", CRAB);
         secondLevel = levelPersistence.getById(1);
         thirdLevel = levelPersistence.getById(2);
     }
-
 }

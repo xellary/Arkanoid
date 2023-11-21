@@ -40,5 +40,4 @@ public class Paddle {
             x -= PADDLE_SPEED;
         }
     }
-
 }
