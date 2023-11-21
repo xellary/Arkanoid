@@ -9,7 +9,7 @@ public class GameFont {
 
     public GameFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/ArcadeClassic.TTF");
+            InputStream is = getClass().getResourceAsStream("/BarcadeBrawlRegular.TTF");
             gameFont = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException | IOException e) {
             System.out.println(e.getMessage());

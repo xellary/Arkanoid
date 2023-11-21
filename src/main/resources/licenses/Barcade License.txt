@@ -1,0 +1,15 @@
+Copyright zephram 2018
+
+Full name: Barcade Brawl Regular
+Version 1.0
+Trademark: FontStruct is a trademark of FontStruct.com
+Designer: zephram
+
+Vendor URL
+https://fontstruct.com/fontstructions/show/1588495/barcade-brawl
+Designer URL
+https://fontstruct.com/fontstructors/show/1520560/zephram
+License
+Creative Commons CC0 Public Domain Dedication
+License URL
+http://creativecommons.org/publicdomain/zero/1.0/

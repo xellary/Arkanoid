@@ -12,19 +12,19 @@ public class Menu {
 
     public void draw(Graphics2D g) {
         drawBackground(g);
-        PLAY_BUTTON.drawButton(g, 20, 27);
-        QUIT_BUTTON.drawButton(g, 22, 27);
+        PLAY_BUTTON.drawButton(g, 27, 27);
+        QUIT_BUTTON.drawButton(g, 29, 27);
         g.setFont(g.getFont().deriveFont(Font.PLAIN, 40));
-        g.drawString("ARKANOID", RESOLUTION_WIDTH / 2 - 102, RESOLUTION_HEIGHT - 500);
+        g.drawString("ARKANOID", RESOLUTION_WIDTH / 2 - 85, RESOLUTION_HEIGHT - 500);
     }
 
     public void drawLevelSelection(Graphics2D g) {
         drawBackground(g);
-        LEVEL_ONE_BUTTON.drawButton(g, 14, 26);
-        LEVEL_TWO_BUTTON.drawButton(g, 14, 26);
-        LEVEL_THREE_BUTTON.drawButton(g, 14, 26);
+        LEVEL_ONE_BUTTON.drawButton(g, 19, 27);
+        LEVEL_TWO_BUTTON.drawButton(g, 19, 27);
+        LEVEL_THREE_BUTTON.drawButton(g, 19, 27);
         g.setFont(g.getFont().deriveFont(Font.PLAIN, 34));
-        g.drawString("CHOOSE  THE  LEVEL", RESOLUTION_WIDTH / 2 - 155, RESOLUTION_HEIGHT - 500);
+        g.drawString("CHOOSE  THE  LEVEL", RESOLUTION_WIDTH / 2 - 135, RESOLUTION_HEIGHT - 500);
     }
 
     private void drawBackground(Graphics2D g) {

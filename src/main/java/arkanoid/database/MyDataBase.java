@@ -39,14 +39,14 @@ public class MyDataBase {
 
     private void createSchema() {
         String sql = """
-                create schema if not exists game.levels;
+                create schema if not exists game;
                 """;
         execute(sql);
     }
 
     public void execute(String sql) {
         try (Connection connection = connect();
-             Statement statement = connection.createStatement()) {
+            Statement statement = connection.createStatement()) {
             statement.execute(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -55,17 +55,16 @@ public class MyDataBase {
 
     private void createTableLevels() {
         String sql = """
-                create table if not exists levels (
+                create table if not exists game.levels (
                     id serial primary key,
-                    name varchar,
-                    pattern varchar[][]
+                    name varchar UNIQUE,
+                    pattern varchar[]
                 );
                 """;
         execute(sql);
-
     }
 
-    public Map<String, String> selectLevelById(int id, String table, String... columnNames) {
+    public Map<String, String> selectById(int id, String table, String... columnNames) {
         Map<String, String> result = new HashMap<>();
         String sql = """
                 select id, %s

@@ -1,6 +1,9 @@
 package arkanoid.game.elements;
 
+import arkanoid.game.elements.levels.Level;
+import arkanoid.database.MyDataBase;
 import arkanoid.game.fonts.GameFont;
+import arkanoid.persistence.LevelPersistence;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +13,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static arkanoid.game.elements.Constants.*;
-import static arkanoid.game.elements.LevelPictures.*;
+import static arkanoid.game.elements.levels.LevelPictures.CRAB;
+import static arkanoid.game.elements.levels.LevelPictures.PYRAMID;
 
 public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
@@ -25,6 +29,10 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private Paddle paddle = new Paddle(START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
     public static State state = State.MENU;
     private final Menu menu = new Menu();
+    private MyDataBase db;
+    private LevelPersistence levelPersistence;
+    private Level secondLevel;
+    private Level thirdLevel;
 
     public Arkanoid() {
         addKeyListener(this);
@@ -32,6 +40,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         addMouseMotionListener(new MouseInput());
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        createGameLevels();
         int delay = 0;
         Timer timer = new Timer(delay, this);
         timer.start();
@@ -107,10 +116,12 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         paddle.x = START_X_LOCATION_0F_PAD;
         score = 0;
         totalBricks = 1;
+
         pattern1 = new BricksGenerator(5, 10);
-        pattern2 = new BricksGenerator(LEVEL2_PICTURE, 88, 350);
-        pattern3 = new BricksGenerator(LEVEL3_PICTURE, 88, 280);
+        pattern2 = new BricksGenerator(secondLevel.getPattern(), 88, 350);
+        pattern3 = new BricksGenerator(thirdLevel.getPattern(), 88, 280);
         repaint();
+
     }
 
     private void drawGame(BricksGenerator pattern, Graphics2D gr) {
@@ -126,7 +137,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.fillRect(0, 0, RESOLUTION_WIDTH, SCORE_PANEL_HEIGHT);
 
         // menu button
-        MENU_BUTTON.drawButton(gr,18, 20);
+        MENU_BUTTON.drawButton(gr,25, 20);
 
         // map
         pattern.draw(gr);
@@ -140,9 +151,9 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         // score
         gr.setColor(Color.white);
         gr.setFont(font);
-        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 35));
-        gr.drawString("Score ", 340, 32);
-        gr.drawString("" + score, 445, 32);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 18));
+        gr.drawString("Score ", 330, 30);
+        gr.drawString(" " + score, 435, 30);
 
         // paddle
         paddle.draw(gr);
@@ -202,27 +213,38 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private void drawVictoryMessage(Graphics2D gr) {
         drawMessageBack(gr);
         gr.setColor(Color.white);
-        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 40));
-        gr.drawString("You won", RESOLUTION_WIDTH / 2 - 70, RESOLUTION_HEIGHT / 2 - 10);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 24));
+        gr.drawString("You won", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2 - 10);
     }
 
     private void drawDefeatMessage(Graphics2D gr) {
         drawMessageBack(gr);
         gr.setColor(Color.red);
-        gr.drawString("Game  Over", RESOLUTION_WIDTH / 2 - 90, RESOLUTION_HEIGHT / 2 - 40);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 16));
+        gr.drawString("Game Over", RESOLUTION_WIDTH / 2 - 85, RESOLUTION_HEIGHT / 2 - 40);
         gr.setColor(Color.white);
-        gr.drawString("Press  Enter  to  Restart", RESOLUTION_WIDTH / 2 - 200, RESOLUTION_HEIGHT / 2);
+        gr.drawString("Press Enter to Restart", RESOLUTION_WIDTH / 2 - 190, RESOLUTION_HEIGHT / 2);
     }
 
     private void drawStartMessage(Graphics2D gr) {
         drawMessageBack(gr);
         gr.setColor(Color.white);
-        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 32));
-        gr.drawString("To  move  paddle  press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 60);
+        gr.setFont(gr.getFont().deriveFont(Font.PLAIN, 14));
+        gr.drawString("To move paddle press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 60);
         gr.drawString("Left and right arrows", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 - 30);
-        gr.drawString("To  win  break all the bricks", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2);
-        gr.drawString("To  start game  press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 + 30);
+        gr.drawString("To win break all the bricks", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2);
+        gr.drawString("To start game press", RESOLUTION_WIDTH / 2 - 210, RESOLUTION_HEIGHT / 2 + 30);
         gr.setColor(Color.green);
-        gr.drawString("Enter", RESOLUTION_WIDTH / 2 + 100, RESOLUTION_HEIGHT / 2 + 30);
+        gr.drawString("Enter", RESOLUTION_WIDTH / 2 + 90, RESOLUTION_HEIGHT / 2 + 30);
     }
+
+    private void createGameLevels() {
+        db = MyDataBase.getInstance();
+        levelPersistence = new LevelPersistence();
+        levelPersistence.createLevel("Pyramid", PYRAMID);
+        levelPersistence.createLevel("Crab", CRAB);
+        secondLevel = levelPersistence.getById(1);
+        thirdLevel = levelPersistence.getById(2);
+    }
+
 }

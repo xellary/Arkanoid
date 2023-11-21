@@ -1,10 +1,11 @@
 package arkanoid;
 
-import arkanoid.game.elements.*;
+import arkanoid.game.elements.Arkanoid;
 
 import javax.swing.*;
 
-import static arkanoid.game.elements.Constants.*;
+import static arkanoid.game.elements.Constants.RESOLUTION_HEIGHT;
+import static arkanoid.game.elements.Constants.RESOLUTION_WIDTH;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +20,5 @@ public class Main {
         frame.add(game);
 
         frame.setVisible(true);
-
     }
 }
