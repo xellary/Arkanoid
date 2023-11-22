@@ -9,7 +9,7 @@ public class MenuFont {
 
     public MenuFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/Teko-SemiBold.ttf");
+            InputStream is = getClass().getResourceAsStream("/font files/Teko-SemiBold.ttf");
             menuFont = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException | IOException e) {
             System.out.println(e.getMessage());

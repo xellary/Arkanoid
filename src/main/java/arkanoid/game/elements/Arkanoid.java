@@ -1,7 +1,6 @@
 package arkanoid.game.elements;
 
 import arkanoid.game.elements.levels.Level;
-import arkanoid.database.MyDataBase;
 import arkanoid.game.fonts.GameFont;
 import arkanoid.persistence.LevelPersistence;
 
@@ -42,6 +41,14 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         int delay = 0;
         Timer timer = new Timer(delay, this);
         timer.start();
+    }
+
+    private void createLevelsFromDB() {
+        LevelPersistence levelPersistence = new LevelPersistence();
+        levelPersistence.createLevel("Pyramid", PYRAMID);
+        levelPersistence.createLevel("Crab", CRAB);
+        secondLevel = levelPersistence.getById(1);
+        thirdLevel = levelPersistence.getById(2);
     }
 
     public void paint(Graphics g) {
@@ -135,7 +142,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.fillRect(0, 0, RESOLUTION_WIDTH, SCORE_PANEL_HEIGHT);
 
         // menu button
-        Menu.menuButton.drawButton(gr,25, 20);
+        Menu.menuButton.drawButton(gr,23, 20);
 
         // map
         pattern.draw(gr);
@@ -236,12 +243,4 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         gr.drawString("Enter", RESOLUTION_WIDTH / 2 + 90, RESOLUTION_HEIGHT / 2 + 30);
     }
 
-    private void createLevelsFromDB() {
-        MyDataBase db = MyDataBase.getInstance();
-        LevelPersistence levelPersistence = new LevelPersistence();
-        levelPersistence.createLevel("Pyramid", PYRAMID);
-        levelPersistence.createLevel("Crab", CRAB);
-        secondLevel = levelPersistence.getById(1);
-        thirdLevel = levelPersistence.getById(2);
-    }
 }

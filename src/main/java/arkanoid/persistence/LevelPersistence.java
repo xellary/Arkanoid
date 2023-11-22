@@ -11,6 +11,7 @@ public class LevelPersistence {
     private static final String LEVEL_NAME = "name";
     private static final String PATTERN_NAME = "pattern";
     private final MyDataBase db = MyDataBase.getInstance();
+
     public void createLevel(String name, String[] pattern) {
         String sql = """
                 insert into game.levels
@@ -21,6 +22,31 @@ public class LevelPersistence {
         String patternPic = "{" + String.join(",", pattern) + "}";
         db.execute(String.format(sql, name, patternPic));
     }
+
+    public void deleteById(int id) {
+        String sql = """
+                delete from game.levels where id = %d;
+                """;
+        db.execute(String.format(sql, id));
+    }
+
+    public void updateNameById(String name, int id) {
+        String sql = """
+                UPDATE game.levels SET name = '%s' 
+                WHERE id = %d;
+                """;
+        db.execute(String.format(sql, name, id));
+    }
+
+    public void updatePatternById(String[] pattern, int id) {
+        String sql = """
+                UPDATE game.levels SET pattern = '%s' 
+                WHERE id = %d;
+                """;
+        String patternPic = "{" + String.join(",", pattern) + "}";
+        db.execute(String.format(sql, patternPic, id));
+    }
+
     public Level getById(int id) {
         Map<String, String> fromDB = db.selectById(
                 id,
@@ -34,6 +60,7 @@ public class LevelPersistence {
         }
         return convertLevel(fromDB);
     }
+
     public Level convertLevel(Map<String, String> fromDB) {
         return new Level(
                 Integer.parseInt(String.valueOf(fromDB.get(ID_NAME))),

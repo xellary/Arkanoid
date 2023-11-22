@@ -25,7 +25,7 @@ public class Menu {
             RESOLUTION_WIDTH / 2 - 60,
             400, 100, 40,"LEVEL 3",23);
     public static Button menuButton = new Button(
-            10,5,90,30, "MENU", 19);
+            10,5,85,30, "MENU", 19);
 
     public void draw(Graphics2D g) {
         drawBackground(g);
