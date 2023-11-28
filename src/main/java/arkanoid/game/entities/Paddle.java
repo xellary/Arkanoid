@@ -1,9 +1,9 @@
-package arkanoid.game.elements;
+package arkanoid.game.entities;
 
 import java.awt.*;
 
-import static arkanoid.game.elements.Constants.PADDLE_SPEED;
-import static arkanoid.game.elements.Constants.RESOLUTION_WIDTH;
+import static arkanoid.game.consts.Constants.PADDLE_SPEED;
+import static arkanoid.game.consts.Constants.RESOLUTION_WIDTH;
 
 public class Paddle {
 

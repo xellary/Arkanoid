@@ -1,4 +1,9 @@
-package arkanoid.game.elements;
+package arkanoid.game.listeners;
+
+import arkanoid.game.Arkanoid;
+import arkanoid.game.enums.State;
+import arkanoid.game.gui.Button;
+import arkanoid.game.gui.Menu;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

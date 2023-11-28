@@ -1,8 +1,8 @@
-package arkanoid.game.elements;
+package arkanoid.game.entities;
 
 import java.awt.*;
 
-import static arkanoid.game.elements.Constants.*;
+import static arkanoid.game.consts.Constants.*;
 public class BricksGenerator {
 
     public int[][] map;

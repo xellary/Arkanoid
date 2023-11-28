@@ -1,4 +1,4 @@
-package arkanoid.game.elements.levels;
+package arkanoid.game.levels;
 
 public class Level {
     private int id;

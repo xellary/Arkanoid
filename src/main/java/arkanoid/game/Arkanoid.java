@@ -1,6 +1,12 @@
-package arkanoid.game.elements;
+package arkanoid.game;
 
-import arkanoid.game.elements.levels.Level;
+import arkanoid.game.entities.Ball;
+import arkanoid.game.entities.BricksGenerator;
+import arkanoid.game.entities.Paddle;
+import arkanoid.game.enums.State;
+import arkanoid.game.gui.Menu;
+import arkanoid.game.levels.Level;
+import arkanoid.game.listeners.MouseInput;
 import arkanoid.game.fonts.GameFont;
 import arkanoid.persistence.LevelPersistence;
 
@@ -11,9 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static arkanoid.game.elements.Constants.*;
-import static arkanoid.game.elements.levels.LevelPictures.CRAB;
-import static arkanoid.game.elements.levels.LevelPictures.PYRAMID;
+import static arkanoid.game.consts.Constants.*;
+import static arkanoid.game.levels.LevelPictures.CRAB;
+import static arkanoid.game.levels.LevelPictures.PYRAMID;
 
 public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
@@ -24,10 +30,14 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private BricksGenerator pattern2;
     private BricksGenerator pattern3;
     private int totalBricks;
-    private Ball ball = new Ball(START_X_LOCATION_0F_BALL, START_Y_LOCATION_0F_BALL, X_DIRECTION, Y_DIRECTION, BALL_SIZE);
-    private Paddle paddle = new Paddle(START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
+    private Ball ball = new Ball(
+            START_X_LOCATION_0F_BALL,
+            START_Y_LOCATION_0F_BALL,
+            X_DIRECTION, Y_DIRECTION, BALL_SIZE);
+    private Paddle paddle = new Paddle(
+            START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
     public static State state = State.MENU;
-    private final Menu menu = new Menu();
+    private final arkanoid.game.gui.Menu menu = new arkanoid.game.gui.Menu();
     private Level secondLevel;
     private Level thirdLevel;
 

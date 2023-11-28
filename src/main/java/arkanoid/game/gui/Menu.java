@@ -1,30 +1,30 @@
-package arkanoid.game.elements;
+package arkanoid.game.gui;
 
 import arkanoid.game.fonts.MenuFont;
 
 import java.awt.*;
 
-import static arkanoid.game.elements.Constants.*;
+import static arkanoid.game.consts.Constants.*;
 
 public class Menu {
 
     private final Font menuFont = new MenuFont().getFont();
-    public static Button quitButton = new Button(
+    public static arkanoid.game.gui.Button quitButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             400, 100, 40, "QUIT", 25);
-    public static Button playButton = new Button(
+    public static arkanoid.game.gui.Button playButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             200, 100, 40, "PLAY", 25);
-    public static Button levelOneButton = new Button(
+    public static arkanoid.game.gui.Button levelOneButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             200, 100, 40,"LEVEL 1",23);
-    public static Button levelTwoButton = new Button(
+    public static arkanoid.game.gui.Button levelTwoButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             300, 100, 40,"LEVEL 2", 23);
-    public static Button levelThreeButton = new Button(
+    public static arkanoid.game.gui.Button levelThreeButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             400, 100, 40,"LEVEL 3",23);
-    public static Button menuButton = new Button(
+    public static arkanoid.game.gui.Button menuButton = new Button(
             10,5,85,30, "MENU", 19);
 
     public void draw(Graphics2D g) {

@@ -1,6 +1,6 @@
 package arkanoid.persistence;
 
-import arkanoid.game.elements.levels.Level;
+import arkanoid.game.levels.Level;
 import arkanoid.database.MyDataBase;
 
 import java.util.Map;

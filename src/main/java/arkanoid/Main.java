@@ -1,11 +1,11 @@
 package arkanoid;
 
-import arkanoid.game.elements.Arkanoid;
+import arkanoid.game.Arkanoid;
 
 import javax.swing.*;
 
-import static arkanoid.game.elements.Constants.RESOLUTION_HEIGHT;
-import static arkanoid.game.elements.Constants.RESOLUTION_WIDTH;
+import static arkanoid.game.consts.Constants.RESOLUTION_HEIGHT;
+import static arkanoid.game.consts.Constants.RESOLUTION_WIDTH;
 
 public class Main {
     public static void main(String[] args) {

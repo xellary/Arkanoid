@@ -1,5 +1,6 @@
-package arkanoid.game.elements;
+package arkanoid.game.gui;
 
+import arkanoid.game.entities.Brick;
 import arkanoid.game.fonts.MenuFont;
 
 import java.awt.*;
