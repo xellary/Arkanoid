@@ -23,7 +23,7 @@ import static arkanoid.game.levels.LevelPictures.PYRAMID;
 
 public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
-    private Font font = new GameFont().getFont();
+    private final Font font = new GameFont().getFont();
     private boolean play = false;
     private int score = 0;
     private BricksGenerator pattern1;
@@ -37,7 +37,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private Paddle paddle = new Paddle(
             START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
     public static State state = State.MENU;
-    private final arkanoid.game.gui.Menu menu = new arkanoid.game.gui.Menu();
+    private final Menu menu = new Menu();
     private Level secondLevel;
     private Level thirdLevel;
 
@@ -51,14 +51,6 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         int delay = 0;
         Timer timer = new Timer(delay, this);
         timer.start();
-    }
-
-    private void createLevelsFromDB() {
-        LevelPersistence levelPersistence = new LevelPersistence();
-        levelPersistence.createLevel("Pyramid", PYRAMID);
-        levelPersistence.createLevel("Crab", CRAB);
-        secondLevel = levelPersistence.getById(1);
-        thirdLevel = levelPersistence.getById(2);
     }
 
     public void paint(Graphics g) {
@@ -123,6 +115,14 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
+    private void createLevelsFromDB() {
+        LevelPersistence levelPersistence = new LevelPersistence();
+        levelPersistence.createLevel("Pyramid", PYRAMID);
+        levelPersistence.createLevel("Crab", CRAB);
+        secondLevel = levelPersistence.getById(1);
+        thirdLevel = levelPersistence.getById(2);
+    }
+
     private void restartGame() {
         ball.x = START_X_LOCATION_0F_BALL;
         ball.y = START_Y_LOCATION_0F_BALL;
@@ -136,7 +136,6 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
         pattern2 = new BricksGenerator(secondLevel.getPattern(), 88, 350);
         pattern3 = new BricksGenerator(thirdLevel.getPattern(), 88, 280);
         repaint();
-
     }
 
     private void drawGame(BricksGenerator pattern, Graphics2D gr) {

@@ -1,7 +1,7 @@
 package arkanoid.game.levels;
 
 public class Level {
-    private int id;
+    private final int id;
     private String name;
     private int[][] pattern;
 
@@ -20,5 +20,4 @@ public class Level {
     public int[][] getPattern() {
         return pattern;
     }
-
 }

@@ -21,6 +21,7 @@ public class Brick {
     public void draw(Graphics2D g, int stroke, Color colorOfStroke) {
         drawBrick(g, stroke, colorOfStroke);
     }
+
     private void drawBrick(Graphics2D g, int stroke, Color colorOfStroke) {
         int sizeOfShadow = height / 4;
         g.setColor(color);

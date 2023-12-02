@@ -61,15 +61,15 @@ public class LevelPersistence {
         return convertLevel(fromDB);
     }
 
-    public Level convertLevel(Map<String, String> fromDB) {
+    private Level convertLevel(Map<String, String> fromDB) {
         return new Level(
                 Integer.parseInt(String.valueOf(fromDB.get(ID_NAME))),
                 fromDB.get(LEVEL_NAME),
-                convertString(fromDB.get(PATTERN_NAME))
+                convertStringToIntArray(fromDB.get(PATTERN_NAME))
         );
     }
 
-    private int[][] convertString(String inputString) {
+    private int[][] convertStringToIntArray(String inputString) {
 
         String[] elements = inputString.replaceAll("[{}]", "").split(",");
         int[][] result = new int[elements.length][elements[0].length()];
