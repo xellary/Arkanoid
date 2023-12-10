@@ -6,10 +6,12 @@ import static arkanoid.game.consts.Constants.*;
 public class BricksGenerator {
 
     public int[][] map;
-    private final Color[] rowColors = new Color[]{MY_RED, MY_PINK, MY_ORANGE, MY_BLUE, MY_GREEN};
-    private Brick brick = new Brick(RESOLUTION_WIDTH, RESOLUTION_HEIGHT);
     public int amountOfBricks;
     public int score;
+
+    private final Color[] rowColors = new Color[]{MY_RED, MY_PINK, MY_ORANGE, MY_BLUE, MY_GREEN};
+
+    private final Brick brick = new Brick(RESOLUTION_WIDTH, RESOLUTION_HEIGHT);
 
     public BricksGenerator(int row, int col) {
         map = new int[row][col];

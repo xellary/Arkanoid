@@ -8,7 +8,6 @@ import static arkanoid.game.consts.Constants.*;
 
 public class Menu {
 
-    private final Font menuFont = new MenuFont().getFont();
     public static arkanoid.game.gui.Button quitButton = new arkanoid.game.gui.Button(
             RESOLUTION_WIDTH / 2 - 60,
             400, 100, 40, "QUIT", 25);
@@ -26,6 +25,8 @@ public class Menu {
             400, 100, 40,"LEVEL 3",23);
     public static arkanoid.game.gui.Button menuButton = new Button(
             10,5,85,30, "MENU", 19);
+
+    private final Font menuFont = new MenuFont().getFont();
 
     public void draw(Graphics2D g) {
         drawBackground(g);

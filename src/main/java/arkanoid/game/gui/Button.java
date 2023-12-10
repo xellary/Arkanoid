@@ -6,13 +6,13 @@ import arkanoid.game.fonts.MenuFont;
 import java.awt.*;
 
 public class Button {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
     public boolean enter;
-    private int sizeOfFont;
-    private String text;
+    private final int sizeOfFont;
+    private final String text;
 
     public Button(int x, int y, int width, int height, String text, int sizeOfFont) {
         this.x = x;
