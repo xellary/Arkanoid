@@ -55,7 +55,7 @@ public class LevelPersistence {
                 LEVEL_NAME,
                 PATTERN_NAME
         );
-        if (fromDB == null) {
+        if (fromDB == null || fromDB.isEmpty()) {
             return null;
         }
         return convertLevel(fromDB);
