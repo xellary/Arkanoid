@@ -15,11 +15,11 @@ public class PaddleTest {
         for (int i = 0; i < 9; i++) {
             paddle.moveLeft();
         }
-        then(paddle.x).isEqualTo(10);
+        then(paddle.getX()).isEqualTo(10);
 
         for (int i = 0; i < 17; i++) {
             paddle.moveRight();
         }
-        then(paddle.x).isEqualTo(RESOLUTION_WIDTH - 120);
+        then(paddle.getX()).isEqualTo(RESOLUTION_WIDTH - 120);
     }
 }

@@ -7,11 +7,10 @@ import static arkanoid.game.consts.Constants.RESOLUTION_WIDTH;
 
 public class Paddle {
 
-    public int x;
-    public int y;
-    public int height;
-    public int width;
-    public Color color = Color.white;
+    private int x;
+    private final int y;
+    private final int height;
+    private final int width;
 
     public Paddle(int x, int y, int width, int height) {
         this.x = x;
@@ -21,7 +20,7 @@ public class Paddle {
     }
 
     public void draw(Graphics2D g) {
-        g.setColor(color);
+        g.setColor(Color.white);
         g.fillRoundRect(x, y, width, height, 5, 5);
     }
 
@@ -39,5 +38,25 @@ public class Paddle {
         } else {
             x -= PADDLE_SPEED;
         }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }

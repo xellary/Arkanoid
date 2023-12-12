@@ -27,12 +27,12 @@ public class Button {
         Font font = new MenuFont().getFont();
         Brick brick = new Brick(width, height);
         if (enter) {
-            brick.color = Color.gray;
+            brick.setColor(Color.gray);
         } else {
-            brick.color = Color.darkGray;
+            brick.setColor(Color.darkGray);
         }
-        brick.x = x;
-        brick.y = y;
+        brick.setX(x);
+        brick.setY(y);
         brick.draw(g, 1, Color.black);
 
         g.setColor(Color.white);

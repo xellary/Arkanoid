@@ -124,11 +124,11 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     }
 
     private void restartGame() {
-        ball.x = START_X_LOCATION_0F_BALL;
-        ball.y = START_Y_LOCATION_0F_BALL;
-        ball.xDir = X_DIRECTION;
-        ball.yDir = Y_DIRECTION;
-        paddle.x = START_X_LOCATION_0F_PAD;
+        ball.setX(START_X_LOCATION_0F_BALL);
+        ball.setY(START_Y_LOCATION_0F_BALL);
+        ball.setXDir(X_DIRECTION);
+        ball.setYDir(Y_DIRECTION);
+        paddle.setX(START_X_LOCATION_0F_PAD);
         score = 0;
         totalBricks = 1;
 
@@ -177,13 +177,13 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
         if (totalBricks <= 0) {
             play = false;
-            ball.xDir = 0;
-            ball.yDir = 0;
+            ball.setXDir(0);
+            ball.setYDir(0);
             drawVictoryMessage(gr);
-        } else if (ball.y > RESOLUTION_HEIGHT - 30) {
+        } else if (ball.getY() > RESOLUTION_HEIGHT - 30) {
             play = false;
-            ball.xDir = 0;
-            ball.yDir = 0;
+            ball.setXDir(0);
+            ball.setYDir(0);
             drawDefeatMessage(gr);
         } else if (!play) {
             drawStartMessage(gr);
@@ -192,25 +192,25 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
     private void actGame(BricksGenerator pattern) {
         if (play) {
-            if (new Rectangle(ball.x, ball.y, ball.radius, ball.radius).intersects(
-                    new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height))) {
-                ball.yDir = -ball.yDir;
+            if (new Rectangle(ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius()).intersects(
+                    new Rectangle(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight()))) {
+                ball.setYDir(-ball.getYDir());
             }
 
             pattern.intersectWithBall(ball);
-            score = pattern.score;
-            totalBricks = pattern.amountOfBricks;
+            score = pattern.getScore();
+            totalBricks = pattern.getAmountOfBricks();
 
-            ball.x += ball.xDir;
-            ball.y += ball.yDir;
-            if (ball.x < 0) {
-                ball.xDir = -ball.xDir;
+            ball.setX(ball.getX() + ball.getXDir());
+            ball.setY(ball.getY() + ball.getYDir());
+            if (ball.getX() < 0) {
+                ball.setXDir(-ball.getXDir());
             }
-            if (ball.y < SCORE_PANEL_HEIGHT) {
-                ball.yDir = -ball.yDir;
+            if (ball.getY() < SCORE_PANEL_HEIGHT) {
+                ball.setYDir(-ball.getYDir());
             }
-            if (ball.x > RESOLUTION_WIDTH - 38) {
-                ball.xDir = -ball.xDir;
+            if (ball.getX() > RESOLUTION_WIDTH - 38) {
+                ball.setXDir(-ball.getXDir());
             }
         }
         repaint();

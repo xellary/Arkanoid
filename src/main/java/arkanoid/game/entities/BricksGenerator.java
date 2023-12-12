@@ -5,9 +5,9 @@ import java.awt.*;
 import static arkanoid.game.consts.Constants.*;
 public class BricksGenerator {
 
-    public int[][] map;
-    public int amountOfBricks;
-    public int score;
+    private final int[][] map;
+    private int amountOfBricks;
+    private int score;
 
     private final Color[] rowColors = new Color[]{MY_RED, MY_PINK, MY_ORANGE, MY_BLUE, MY_GREEN};
 
@@ -21,8 +21,8 @@ public class BricksGenerator {
                 map[i][j] = 1;
             }
         }
-        brick.height = (brick.height - 490) / row;
-        brick.width = (brick.width - 88) / col;
+        brick.setHeight((brick.getHeight() - 490) / row);
+        brick.setWidth((brick.getWidth() - 88) / col);
     }
 
     public BricksGenerator(int[][] picture, int widthOfArea, int heightOfArea) {
@@ -35,18 +35,18 @@ public class BricksGenerator {
                 }
             }
         }
-        brick.height = (brick.height - heightOfArea) / map.length;
-        brick.width = (brick.width - widthOfArea) / map[0].length;
+        brick.setHeight((brick.getHeight() - heightOfArea) / map.length);
+        brick.setWidth((brick.getWidth() - widthOfArea) / map[0].length);
     }
 
     public void draw(Graphics2D g) {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 if (map[i][j] > 0) {
-                    brick.color = rowColors[i % rowColors.length];
-                    g.setColor(brick.color);
-                    brick.x = j * brick.width + 40;
-                    brick.y = i * brick.height + 100;
+                    brick.setColor(rowColors[i % rowColors.length]);
+                    g.setColor(brick.getColor());
+                    brick.setX(j * brick.getWidth() + 40);
+                    brick.setY(i * brick.getHeight() + 100);
                     brick.draw(g);
                 }
             }
@@ -65,25 +65,33 @@ public class BricksGenerator {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 if (map[i][j] > 0) {
-                    int brickX = j * brick.width + 40;
-                    int brickY = i * brick.height + 100;
+                    int brickX = j * brick.getWidth() + 40;
+                    int brickY = i * brick.getHeight() + 100;
 
-                    Rectangle brickRect = new Rectangle(brickX, brickY, brick.width, brick.height);
-                    Rectangle ballRect = new Rectangle(ball.x, ball.y, ball.radius, ball.radius);
+                    Rectangle brickRect = new Rectangle(brickX, brickY, brick.getWidth(), brick.getHeight());
+                    Rectangle ballRect = new Rectangle(ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius());
 
                     if (ballRect.intersects(brickRect)) {
                         setBrickValue(0, i, j);
                         score += 5;
 
-                        if (ball.x + 19 <= brickRect.x || ball.x + 1 >= brickRect.x + brickRect.width) {
-                            ball.xDir = -ball.xDir;
+                        if (ball.getX() + 19 <= brickRect.x || ball.getX() + 1 >= brickRect.x + brickRect.width) {
+                            ball.setXDir(-ball.getXDir());
                         } else {
-                            ball.yDir = -ball.yDir;
+                            ball.setYDir(-ball.getYDir());
                         }
                         break A;
                     }
                 }
             }
         }
+    }
+
+    public int getAmountOfBricks() {
+        return amountOfBricks;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
