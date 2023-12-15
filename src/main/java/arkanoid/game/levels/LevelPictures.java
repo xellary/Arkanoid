@@ -15,7 +15,7 @@ public interface LevelPictures {
             "000000000"
     };
 
-    String[] CRAB = {
+    String[] LEVEL_THREE = {
             "00010001000",
             "00010001000",
             "00111111100",

@@ -18,11 +18,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static arkanoid.game.consts.Constants.*;
-import static arkanoid.game.levels.LevelPictures.CRAB;
+import static arkanoid.game.levels.LevelPictures.LEVEL_THREE;
 import static arkanoid.game.levels.LevelPictures.PYRAMID;
 
 public class Arkanoid extends JPanel implements ActionListener, KeyListener {
 
+    public static State state = State.MENU;
     private final Font font = new GameFont().getFont();
     private boolean play = false;
     private int score = 0;
@@ -36,7 +37,6 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
             X_DIRECTION, Y_DIRECTION, BALL_SIZE);
     private Paddle paddle = new Paddle(
             START_X_LOCATION_0F_PAD, START_Y_LOCATION_0F_PAD, 100, 10);
-    public static State state = State.MENU;
     private final Menu menu = new Menu();
     private Level secondLevel;
     private Level thirdLevel;
@@ -118,7 +118,7 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
     private void createLevelsFromDB() {
         LevelPersistence levelPersistence = new LevelPersistence();
         levelPersistence.createLevel("Pyramid", PYRAMID);
-        levelPersistence.createLevel("Crab", CRAB);
+        levelPersistence.createLevel("Crab", LEVEL_THREE);
         secondLevel = levelPersistence.getById(1);
         thirdLevel = levelPersistence.getById(2);
     }
@@ -213,7 +213,6 @@ public class Arkanoid extends JPanel implements ActionListener, KeyListener {
                 ball.setXDir(-ball.getXDir());
             }
         }
-        repaint();
     }
 
     private void drawMessageBack(Graphics2D gr) {

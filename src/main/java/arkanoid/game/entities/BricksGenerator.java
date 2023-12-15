@@ -60,6 +60,10 @@ public class BricksGenerator {
         }
     }
 
+    public int getBrickValue(int row, int col) {
+        return map[row][col];
+    }
+
     public void intersectWithBall(Ball ball) {
         A:
         for (int i = 0; i < map.length; i++) {
